@@ -5,7 +5,7 @@
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Zhenhao
 middle_name: 
-last_name: LI
+last_name: Li
 email: zhenhaoli00@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   The academic website of Zhenhao LI.
@@ -271,7 +271,7 @@ display_categories: ['blockquotes'] # these categories will be displayed on the 
 
 scholar:
 
-  last_name: [LI]
+  last_name: [Li]
   first_name: [Zhenhao]
 
   style: apa
