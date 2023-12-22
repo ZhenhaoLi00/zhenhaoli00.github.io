@@ -2,11 +2,22 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
-nav: false
+description: 
+nav: true
 nav_order: 5
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+----
+### EE230 Electronic Circuits and Systems
 
-Organize your courses by years, topics, or universities, however you like!
+Jan 2023 - Dec 2023, *Iowa State University*
+
+Help students to build essential blocks for diverse electronic applications.
+
+----
+
+### SME306 Advanced Digital CMOS IC Design
+
+Sep 2021 - Jan 2022, *Southern University of Science and Technology*
+
+Help students to learn to use Cadence Virtuoso and achieve their design task of an 8x8 Multiplier.
