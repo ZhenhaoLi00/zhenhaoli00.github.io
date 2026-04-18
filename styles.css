@@ -211,20 +211,10 @@ strong { font-weight: 600; }
 }
 .nav a[aria-current="page"] {
   color: var(--accent);
+  font-weight: 700;
 }
 .nav a[aria-current="page"] .num {
   color: var(--accent);
-}
-.nav a[aria-current="page"]::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin-right: 0.6rem;
-  vertical-align: middle;
-  transform: translateY(-2px);
 }
 
 .sidebar .meta {
