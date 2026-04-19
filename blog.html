@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhenhao Li - Blog</title>
+<meta name="description" content="Notes and writings by Zhenhao Li.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="content/assets/image/favicon-opamp.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar" aria-hidden="true">
+      <img src="content/assets/image/ZhenhaoLi.jpg" alt="Zhenhao Li">
+    </div>
+
+    <div class="identity">
+      <h1 class="name">Zhenhao Li</h1>
+      <p class="role">
+        PhD Student<br>Analog &amp; Power IC Design<br><a href="https://www.ece.iastate.edu/">ECpE</a>, <a href="https://www.iastate.edu/">Iowa State University</a>
+      </p>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html"><span>About</span></a></li>
+        <li><a href="publications.html"><span>Publications</span></a></li>
+        <li><a href="cv.html"><span>CV</span></a></li>
+        <li><a href="teaching.html"><span>Teaching</span></a></li>
+        <li><a href="news.html"><span>News</span></a></li>
+        <li><a href="blog.html" aria-current="page"><span>Blog</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="meta">
+      zhenhao <span style="opacity:.5">at</span> iastate.edu<br>
+      Ames, Iowa - USA
+    </div>
+  </aside>
+  <main class="main">
+    <span class="kicker"></span>
+    <h1 class="page-title">Blog.</h1>
+
+    <section class="prose">
+      <p>Short notes on analog circuits, measurement details, and design work worth writing down.</p>
+    </section>
+
+    <div class="blog-toolbar" role="toolbar" aria-label="Sort and filter blog posts">
+      <div class="group" role="group" aria-label="Sort posts">
+        <span class="label">Sort</span>
+        <button class="chip is-active" data-sort="desc" aria-pressed="true">Newest</button>
+        <button class="chip" data-sort="asc" aria-pressed="false">Oldest</button>
+      </div>
+      <div class="group" role="group" aria-label="Filter posts by keyword">
+        <span class="label">Keyword</span>
+        <button class="chip is-active" data-filter="all" aria-pressed="true">All <span class="n" id="cnt-all">0</span></button>
+        <span id="kw-chips" style="display: contents"></span>
+      </div>
+      <span class="count" id="result-count"></span>
+    </div>
+
+    <ul class="blog-list" id="blog-list">
+
+    </ul>
+
+    <p class="blog-empty" id="blog-empty">No posts match that keyword.</p>
+
+    <footer class="footer">
+      <span>&copy; 2026 Zhenhao Li</span>
+      <span>Last updated - April 18, 2026</span>
+    </footer>
+  </main>
+<script>
+(function () {
+  var list = document.getElementById('blog-list');
+  var items = Array.prototype.slice.call(list.querySelectorAll('.blog-entry'));
+  var empty = document.getElementById('blog-empty');
+  var countEl = document.getElementById('result-count');
+  var kwHost = document.getElementById('kw-chips');
+  var tagCounts = {};
+
+  items.forEach(function (el) {
+    (el.dataset.tags || '').split(/\s+/).filter(Boolean).forEach(function (tag) {
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+    });
+  });
+
+  document.getElementById('cnt-all').textContent = items.length;
+
+  Object.keys(tagCounts).sort().forEach(function (tag) {
+    var chip = document.createElement('button');
+    chip.className = 'chip';
+    chip.setAttribute('data-filter', tag);
+    chip.setAttribute('aria-pressed', 'false');
+    chip.innerHTML = tag + ' <span class="n">' + tagCounts[tag] + '</span>';
+    kwHost.appendChild(chip);
+  });
+
+  var state = { sort: 'desc', filter: 'all' };
+
+  function apply() {
+    var sorted = items.slice().sort(function (a, b) {
+      var da = a.dataset.date;
+      var db = b.dataset.date;
+      return state.sort === 'desc' ? db.localeCompare(da) : da.localeCompare(db);
+    });
+    sorted.forEach(function (el) { list.appendChild(el); });
+
+    var visible = 0;
+    items.forEach(function (el) {
+      var tags = (el.dataset.tags || '').split(/\s+/).filter(Boolean);
+      var show = state.filter === 'all' || tags.indexOf(state.filter) !== -1;
+      el.classList.toggle('is-hidden', !show);
+      if (show) visible += 1;
+    });
+
+    countEl.textContent = visible + (visible === 1 ? ' post' : ' posts');
+    empty.classList.toggle('is-visible', visible === 0);
+  }
+
+  document.querySelector('.blog-toolbar').addEventListener('click', function (e) {
+    var chip = e.target.closest('.chip');
+    if (!chip) return;
+
+    var key = chip.dataset.sort ? 'sort' : 'filter';
+    state[key] = chip.dataset.sort || chip.dataset.filter;
+
+    var selector = key === 'sort' ? '[data-sort]' : '[data-filter]';
+    document.querySelectorAll('.blog-toolbar ' + selector).forEach(function (node) {
+      var active = node === chip;
+      node.classList.toggle('is-active', active);
+      node.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    apply();
+  });
+
+  list.addEventListener('click', function (e) {
+    var tag = e.target.closest('.tag');
+    if (!tag) return;
+    var filterChip = document.querySelector('.chip[data-filter="' + tag.textContent.trim().toLowerCase() + '"]');
+    if (filterChip) filterChip.click();
+  });
+
+  apply();
+})();
+</script>
+</div>
+</body>
+</html>
