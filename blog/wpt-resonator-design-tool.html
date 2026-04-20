@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhenhao Li - WPT Resonant Filter Design Tool</title>
+<meta name="description" content="A Python/Streamlit tool for designing compensation networks in wireless power transfer systems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../content/assets/image/favicon-opamp.svg">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar" aria-hidden="true">
+      <img src="../content/assets/image/ZhenhaoLi.jpg" alt="Zhenhao Li">
+    </div>
+
+    <div class="identity">
+      <h1 class="name">Zhenhao Li</h1>
+      <p class="role">
+        PhD Student<br>Analog &amp; Power IC Design<br><a href="https://www.ece.iastate.edu/">ECpE</a>, <a href="https://www.iastate.edu/">Iowa State University</a>
+      </p>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="../index.html"><span>About</span></a></li>
+        <li><a href="../publications.html"><span>Publications</span></a></li>
+        <li><a href="../cv.html"><span>CV</span></a></li>
+        <li><a href="../teaching.html"><span>Teaching</span></a></li>
+        <li><a href="../news.html"><span>News</span></a></li>
+        <li><a href="../blog.html" aria-current="page"><span>Blog</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="meta">
+      zhenhao <span style="opacity:.5">at</span> iastate.edu<br>
+      Ames, Iowa - USA
+    </div>
+  </aside>
+  <main class="main">
+    <span class="kicker">Project</span>
+    <h1 class="page-title">WPT Resonant Filter Design Tool</h1>
+
+    <div class="post-meta">
+      <span class="date">April 20, 2026</span>
+      <span>2 min read</span>
+      <ul class="tags">
+          <li class="tag">WPT</li>
+          <li class="tag">power electronics</li>
+          <li class="tag">tools</li>
+      </ul>
+    </div>
+
+    <article class="post-body">
+<p>
+        <strong>TLDR:</strong> A Streamlit app that designs and compares compensation
+        network topologies for inductive wireless power transfer systems —
+        <a href="https://github.com/ZhenhaoLi00/WPT-Resonant-Filter-Design-Tool">source on GitHub</a>.
+      </p>
+
+      <h2>Why I built it</h2>
+      <p>
+        Picking a compensation topology for a WPT link usually means grinding through
+        the same AC circuit math for each candidate — SS, SP, LCC-S, and so on —
+        then juggling spreadsheets to compare results. I wanted a single tool
+        where I could set coil parameters once and immediately see how each
+        topology performs, including realistic copper losses and component stress.
+      </p>
+
+      <h2>What it does</h2>
+      <ul>
+        <li>Supports six topologies: SS, SP, PS, PP, LCC-S, LCC-P.</li>
+        <li>
+          <strong>Manual mode:</strong> enter component values and get
+          frequency-sweep plots of gain, efficiency, impedance, coil currents,
+          and capacitor voltage stress.
+        </li>
+        <li>
+          <strong>Auto mode:</strong> coarse log-grid search followed by local
+          optimization to find the best-performing topology given your
+          constraints.
+        </li>
+        <li>RMS current limits and capacitor voltage rating checks enforced throughout.</li>
+        <li>Copper losses and FHA rectifier approximation included in every calculation.</li>
+      </ul>
+
+      <h2>Try it</h2>
+      <p>
+        Clone the repo and run <code>streamlit run app.py</code>.
+        Everything runs locally in a browser — no server needed.
+        <a href="https://github.com/ZhenhaoLi00/WPT-Resonant-Filter-Design-Tool">GitHub →</a>
+      </p>
+      <a class="post-back" href="../blog.html">&larr; Back to blog</a>
+    </article>
+
+    <footer class="footer">
+      <span>&copy; 2026 Zhenhao Li</span>
+      <span>Last updated - April 20, 2026</span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

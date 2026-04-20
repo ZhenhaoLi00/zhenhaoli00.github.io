@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhenhao Li - Hunting a 3 ppm/degC drift in a bandgap reference.</title>
+<meta name="description" content="A week-long chase through curvature correction, op-amp offset, and a thermocouple in the probe station.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../content/assets/image/favicon-opamp.svg">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar" aria-hidden="true">
+      <img src="../content/assets/image/ZhenhaoLi.jpg" alt="Zhenhao Li">
+    </div>
+
+    <div class="identity">
+      <h1 class="name">Zhenhao Li</h1>
+      <p class="role">
+        PhD Student<br>Analog &amp; Power IC Design<br><a href="https://www.ece.iastate.edu/">ECpE</a>, <a href="https://www.iastate.edu/">Iowa State University</a>
+      </p>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="../index.html"><span>About</span></a></li>
+        <li><a href="../publications.html"><span>Publications</span></a></li>
+        <li><a href="../cv.html"><span>CV</span></a></li>
+        <li><a href="../teaching.html"><span>Teaching</span></a></li>
+        <li><a href="../news.html"><span>News</span></a></li>
+        <li><a href="../blog.html" aria-current="page"><span>Blog</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="meta">
+      zhenhao <span style="opacity:.5">at</span> iastate.edu<br>
+      Ames, Iowa - USA
+    </div>
+  </aside>
+  <main class="main">
+    <span class="kicker">Blog - post</span>
+    <h1 class="page-title">Hunting a 3 ppm/degC drift in a bandgap reference.</h1>
+
+    <div class="post-meta">
+      <span class="date">April 10, 2026</span>
+      <span>7 min read</span>
+      <ul class="tags">
+          <li class="tag">analog</li>
+          <li class="tag">bandgap</li>
+          <li class="tag">measurement</li>
+      </ul>
+    </div>
+
+    <article class="post-body">
+<p>
+        The reference read <strong>13 ppm/degC</strong> on the bench and
+        <strong>3 ppm/degC</strong> in simulation. That gap was large enough to
+        suggest the setup was measuring more than the reference itself.
+      </p>
+
+      <h2>First suspect: curvature correction</h2>
+      <p>
+        The obvious place to look was the second-order term. A standard Brokaw
+        topology can cancel the linear PTAT and CTAT slopes but still leaves a
+        residual bow over temperature. I plotted simulated and measured output
+        against temperature and the shapes did not match: the measured curve
+        carried a nearly linear tilt on top of the expected parabola.
+      </p>
+
+      <figure>
+        <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simulated and measured bandgap tempco">
+          <rect width="600" height="240" fill="#efe9d9"/>
+          <line x1="50" y1="30" x2="50" y2="210" stroke="#6f6b60" stroke-width="1"/>
+          <line x1="50" y1="210" x2="570" y2="210" stroke="#6f6b60" stroke-width="1"/>
+          <g font-family="JetBrains Mono, monospace" font-size="10" fill="#6f6b60">
+            <text x="50" y="226" text-anchor="middle">-40</text>
+            <text x="180" y="226" text-anchor="middle">0</text>
+            <text x="310" y="226" text-anchor="middle">40</text>
+            <text x="440" y="226" text-anchor="middle">85</text>
+            <text x="560" y="226" text-anchor="middle">125 degC</text>
+          </g>
+          <path d="M 50 170 Q 310 80 570 170" fill="none" stroke="#5f6036" stroke-width="2"/>
+          <path d="M 50 200 Q 310 90 570 110" fill="none" stroke="#8b2a2a" stroke-width="2"/>
+          <g font-family="Work Sans, sans-serif" font-size="11">
+            <rect x="400" y="38" width="14" height="3" fill="#5f6036"/>
+            <text x="420" y="42" fill="#3a3a3a">simulated - 3 ppm/degC</text>
+            <rect x="400" y="58" width="14" height="3" fill="#8b2a2a"/>
+            <text x="420" y="62" fill="#3a3a3a">measured - 13 ppm/degC</text>
+          </g>
+        </svg>
+        <figcaption>
+          <span class="num">Fig. 1</span>
+          Simulated output against the first bench sweep. The extra measured
+          tilt was the useful clue.
+        </figcaption>
+      </figure>
+
+      <h2>Second suspect: op-amp offset drift</h2>
+      <p>
+        A linear tilt points naturally to op-amp offset. I swept
+        <code>V<sub>OS</sub></code> in simulation and could reproduce a similar
+        family of curves if <code>dV<sub>OS</sub>/dT</code> was large enough.
+        Trimming offset at room temperature, however, barely changed the slope.
+        That eliminated offset as the dominant error source.
+      </p>
+
+      <h2>Actual culprit: a thermocouple in the probe</h2>
+      <p>
+        The Kelvin pair on the probe card was not thermally symmetric. One
+        contact path was tungsten on aluminum pad metal, while the return path
+        involved a different junction stack. With the chuck heated and the
+        probe body closer to room temperature, the resulting Seebeck voltage was
+        large enough to masquerade as reference drift.
+      </p>
+
+      <blockquote>
+        The circuit was not drifting nearly as much as the measurement path was.
+      </blockquote>
+
+      <p>
+        After shorting the Kelvin pair directly at the pad and allowing a much
+        longer dwell at each temperature step, the measured tempco dropped to
+        roughly <strong>4.2 ppm/degC</strong>, much closer to simulation.
+      </p>
+
+      <h3>Lessons</h3>
+      <ul>
+        <li>Plot error shape, not only the final tempco number.</li>
+        <li>Check for thermal gradients anywhere metal junctions can form.</li>
+        <li>Let the entire fixture settle, not just the DUT chuck temperature.</li>
+      </ul>
+      <a class="post-back" href="../blog.html">&larr; Back to blog</a>
+    </article>
+
+    <footer class="footer">
+      <span>&copy; 2026 Zhenhao Li</span>
+      <span>Last updated - April 18, 2026</span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
