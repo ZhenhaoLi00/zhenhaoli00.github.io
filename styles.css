@@ -3,7 +3,7 @@
    Shared stylesheet for: index / publications / cv / teaching
    ------------------------------------------------------------
    Design notes (edit freely):
-   - Type: EB Garamond (display) / Work Sans (UI & body) /
+   - Type: SF Pro Display (display) / SF Pro Text (UI & body) /
            JetBrains Mono (BibTeX, metadata)
    - Palette: near-white page, ink body, Prussian blue accent,
               slate blue for secondary metadata
@@ -24,8 +24,8 @@
   --slate:      #4a7090;        /* secondary blue */
 
   /* Type */
-  --serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --sans:  "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sans:  "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   /* Rhythm */
@@ -42,8 +42,9 @@ html, body {
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.47;
   font-weight: 400;
+  letter-spacing: -0.374px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -133,11 +134,11 @@ strong { font-weight: 600; }
 /* Swap this span with <img src="assets/img/ZhenhaoLi.jpg" alt="Zhenhao Li"> */
 .avatar .initials {
   font-family: var(--serif);
-  font-size: 58px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.28px;
   color: var(--ink);
-  line-height: 1;
+  line-height: 1.07;
 }
 .avatar img {
   width: 100%;
@@ -148,18 +149,19 @@ strong { font-weight: 600; }
 
 .identity .name {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: 2.05rem;
-  line-height: 1.05;
-  letter-spacing: -0.005em;
+  font-weight: 600;
+  font-size: 2.13rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   margin: 0 0 0.35rem;
   color: var(--ink);
 }
 .identity .role {
   font-family: var(--sans);
-  font-size: 0.88rem;
+  font-size: 1.06rem;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   margin: 0;
 }
 .identity .role a {
@@ -191,10 +193,9 @@ strong { font-weight: 600; }
   justify-content: space-between;
   padding: 0.7rem 0;
   font-family: var(--sans);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: -0.224px;
   color: var(--ink-soft);
   border-bottom: none;
 }
@@ -219,10 +220,10 @@ strong { font-weight: 600; }
 
 .sidebar .meta {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.33;
 }
 .sidebar .meta a {
   color: var(--muted);
@@ -240,7 +241,7 @@ strong { font-weight: 600; }
 .kicker {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
@@ -249,20 +250,20 @@ strong { font-weight: 600; }
 
 h1.page-title {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
+  font-weight: 600;
+  font-size: clamp(2.75rem, 5vw, 3.5rem);
+  line-height: 1.07;
+  letter-spacing: -0.28px;
   margin: 0 0 2rem;
   color: var(--ink);
 }
 
 h2.section {
-  font-family: var(--sans);
-  font-size: 0.78rem;
+  font-family: var(--serif);
+  font-size: 2.5rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.1;
   color: var(--ink);
   margin: 3rem 0 1.2rem;
   padding-bottom: 0.5rem;
@@ -273,7 +274,7 @@ h2.section {
 }
 h2.section .rule-count {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: var(--muted);
   font-weight: 400;
@@ -282,16 +283,17 @@ h2.section .rule-count {
 
 /* Body prose */
 .prose p {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  line-height: 1.55;
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   margin: 0 0 1.1rem;
   max-width: var(--measure);
   color: var(--ink);
 }
 .prose p.lede {
-  font-size: 1.35rem;
-  line-height: 1.5;
+  font-size: 1.06rem;
+  line-height: 1.47;
 }
 
 /* ============================================================
@@ -309,12 +311,12 @@ h2.section .rule-count {
 .news td {
   padding: 0.9rem 0;
   vertical-align: top;
-  font-size: 0.98rem;
+  font-size: 1.06rem;
 }
 .news td.when {
   width: 130px;
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--accent);
   letter-spacing: 0.04em;
   padding-right: 1.2rem;
@@ -323,7 +325,8 @@ h2.section .rule-count {
 }
 .news td.what {
   color: var(--ink);
-  line-height: 1.55;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
 }
 
 @media (max-width: 560px) {
@@ -340,13 +343,13 @@ h2.section .rule-count {
 }
 .year-head {
   font-family: var(--serif);
-  font-size: 2.2rem;
-  font-weight: 500;
-  font-style: italic;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-style: normal;
   color: var(--slate);
   margin: 0 0 1rem;
-  line-height: 1;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .pub-list {
@@ -387,19 +390,20 @@ h2.section .rule-count {
 }
 .pub .title {
   font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.35;
+  font-size: 1.31rem;
+  font-weight: 700;
+  line-height: 1.19;
   color: var(--ink);
   margin: 0 0 0.35rem;
-  letter-spacing: -0.005em;
+  letter-spacing: 0.231px;
 }
 .pub .authors {
   font-family: var(--sans);
-  font-size: 0.93rem;
+  font-size: 1.06rem;
   color: var(--ink-soft);
   margin: 0 0 0.2rem;
-  line-height: 1.5;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
 }
 .pub .authors .me {
   color: var(--accent);
@@ -407,11 +411,13 @@ h2.section .rule-count {
   font-style: normal;
 }
 .pub .venue-full {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.98rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.88rem;
   color: var(--muted);
   margin: 0 0 0.6rem;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
 }
 .pub .venue-full .year {
   font-style: normal;
@@ -429,16 +435,16 @@ h2.section .rule-count {
   gap: 0.4rem 0.8rem;
   align-items: center;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   margin-top: 0.3rem;
 }
 .pub .actions a,
 .pub details summary {
   font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
   padding: 0.3rem 0.6rem;
   border: 1px solid var(--hair);
   border-radius: 2px;
@@ -517,8 +523,8 @@ h2.section .rule-count {
   padding: 0.8rem 1rem 0.8rem 0;
   width: 180px;
   font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: -0.12px;
   text-transform: uppercase;
   color: var(--muted);
   vertical-align: top;
@@ -526,7 +532,9 @@ h2.section .rule-count {
 .info-table td {
   padding: 0.8rem 0;
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.06rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
 }
 
 .timeline {
@@ -546,26 +554,28 @@ h2.section .rule-count {
 
 .timeline .when {
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: var(--accent);
   padding-top: 0.35rem;
 }
 .timeline .what h3 {
   font-family: var(--serif);
-  font-size: 1.28rem;
-  font-weight: 500;
+  font-size: 1.31rem;
+  font-weight: 700;
   margin: 0 0 0.2rem;
   color: var(--ink);
-  letter-spacing: -0.005em;
-  line-height: 1.25;
+  letter-spacing: 0.231px;
+  line-height: 1.19;
 }
 .timeline .what .where {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.02rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.88rem;
   color: var(--muted);
   margin: 0 0 0.6rem;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
 }
 .timeline .what ul {
   margin: 0.2rem 0 0;
@@ -576,9 +586,10 @@ h2.section .rule-count {
   grid-template-columns: none;
   padding: 0.15rem 0;
   border: 0;
-  font-size: 0.98rem;
+  font-size: 1.06rem;
   color: var(--ink-soft);
-  line-height: 1.55;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
 }
 .timeline .what ul li::marker { color: var(--accent); }
 
@@ -597,7 +608,7 @@ h2.section .rule-count {
 }
 .interests li {
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--hair);
   border-radius: 2px;
@@ -613,10 +624,11 @@ h2.section .rule-count {
   background: var(--paper-2);
   border-radius: 3px;
   padding: 2rem 2rem;
-  font-family: var(--serif);
-  font-size: 1.08rem;
+  font-family: var(--sans);
+  font-size: 1.06rem;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   max-width: var(--measure);
 }
 .empty-card .label {
@@ -638,7 +650,7 @@ h2.section .rule-count {
   padding-top: 1.2rem;
   border-top: 1px solid var(--hair);
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: var(--muted);
   display: flex;
@@ -673,7 +685,7 @@ h2.section .rule-count {
 }
 .blog-toolbar .label {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
@@ -681,16 +693,15 @@ h2.section .rule-count {
 .blog-toolbar .count {
   margin-left: auto;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: var(--muted);
 }
 
 .chip {
   font-family: var(--sans);
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.88rem;
+  letter-spacing: 0;
   font-weight: 500;
   padding: 0.32rem 0.65rem;
   border: 1px solid var(--hair);
@@ -714,7 +725,7 @@ h2.section .rule-count {
 }
 .chip .n {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   margin-left: 0.35rem;
   opacity: 0.75;
   letter-spacing: 0;
@@ -738,7 +749,7 @@ h2.section .rule-count {
 
 .blog-entry .when {
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: var(--accent);
   padding-top: 0.35rem;
@@ -746,11 +757,11 @@ h2.section .rule-count {
 
 .blog-entry .body h3 {
   font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 500;
+  font-size: 1.75rem;
+  font-weight: 400;
   margin: 0 0 0.3rem;
-  line-height: 1.25;
-  letter-spacing: -0.005em;
+  line-height: 1.14;
+  letter-spacing: 0.196px;
 }
 .blog-entry .body h3 a {
   color: var(--ink);
@@ -762,9 +773,10 @@ h2.section .rule-count {
   background: transparent;
 }
 .blog-entry .excerpt {
-  font-family: var(--serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   color: var(--ink-soft);
   margin: 0 0 0.6rem;
   max-width: var(--measure);
@@ -822,7 +834,7 @@ h2.section .rule-count {
   flex-wrap: wrap;
   gap: 0.6rem 1.2rem;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: var(--muted);
   margin: -1rem 0 1.6rem;
@@ -839,43 +851,47 @@ h2.section .rule-count {
   max-width: var(--measure);
 }
 .post-body p {
-  font-family: var(--serif);
-  font-size: 1.18rem;
-  line-height: 1.62;
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   margin: 0 0 1.1rem;
   color: var(--ink);
 }
 .post-body h2 {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: 1.55rem;
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.1;
   margin: 2.2rem 0 0.9rem;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
 }
 .post-body h3 {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 0.82rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 1.31rem;
+  letter-spacing: 0.231px;
   color: var(--ink);
   margin: 1.8rem 0 0.6rem;
+  line-height: 1.19;
 }
 .post-body blockquote {
   margin: 1.4rem 0;
   padding: 0.2rem 0 0.2rem 1.2rem;
   border-left: 3px solid var(--accent);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.15rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 1.06rem;
   color: var(--ink-soft);
+  line-height: 1.47;
+  letter-spacing: -0.374px;
 }
 .post-body ul,
 .post-body ol {
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  line-height: 1.55;
+  font-family: var(--sans);
+  font-size: 1.06rem;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   padding-left: 1.3rem;
 }
 .post-body ul li::marker { color: var(--accent); }
@@ -889,7 +905,7 @@ h2.section .rule-count {
 }
 .post-body pre {
   font-family: var(--mono);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   background: var(--paper-2);
   border: 1px solid var(--hair);
@@ -913,16 +929,17 @@ h2.section .rule-count {
 }
 .post-body figcaption {
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--muted);
   margin-top: 0.55rem;
   padding-left: 0.6rem;
   border-left: 2px solid var(--hair);
-  line-height: 1.5;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
 }
 .post-body figcaption .num {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
@@ -933,7 +950,7 @@ h2.section .rule-count {
   display: inline-block;
   margin-top: 3rem;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
