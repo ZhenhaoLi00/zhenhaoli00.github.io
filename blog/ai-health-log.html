@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhenhao Li - AI Health Log: Shared Context for AI Assistants</title>
+<meta name="description" content="A lightweight Git-based template for keeping training, meals, sleep, and body metrics in one place across AI assistants.">
+<meta name="google-site-verification" content="Lk9SQ0H0yC_mYkQyqBnwCYCuh4FDRKFr0xp4jOMrZMU" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../content/assets/image/favicon-opamp.svg">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="page">
+  <aside class="sidebar">
+    <div class="avatar" aria-hidden="true">
+      <img src="../content/assets/image/ZhenhaoLi.jpg" alt="Zhenhao Li">
+    </div>
+
+    <div class="identity">
+      <h1 class="name">Zhenhao Li</h1>
+      <p class="role">
+        PhD Candidate<br>Analog &amp; Power IC Design<br><a href="https://www.ece.iastate.edu/">ECpE</a>, <a href="https://www.iastate.edu/">Iowa State University</a>
+      </p>
+    </div>
+
+    <nav>
+      <ul class="nav">
+        <li><a href="../index.html"><span>About</span></a></li>
+        <li><a href="../publications.html"><span>Publications</span></a></li>
+        <li><a href="../cv.html"><span>CV</span></a></li>
+        <li><a href="../teaching.html"><span>Teaching</span></a></li>
+        <li><a href="../news.html"><span>News</span></a></li>
+        <li><a href="../blog.html" aria-current="page"><span>Blog</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="meta">
+      zhenhao <span style="opacity:.5">at</span> iastate.edu<br>
+      Ames, Iowa - USA
+    </div>
+  </aside>
+  <main class="main">
+    <span class="kicker">Project</span>
+    <h1 class="page-title">AI Health Log: Shared Context for AI Assistants</h1>
+
+    <div class="post-meta">
+      <span class="date">October 09, 2026</span>
+      <span>3 min read</span>
+      <ul class="tags">
+          <li class="tag">AI</li>
+          <li class="tag">health</li>
+          <li class="tag">tools</li>
+      </ul>
+    </div>
+
+    <article class="post-body">
+<p>
+        <strong>TLDR:</strong> AI Health Log is a lightweight template for keeping
+        training, meals, sleep, and body metrics in a single Git repository that
+        different AI assistants can work with. The template is public; your real
+        records belong in a private copy.
+        <a href="https://github.com/ZhenhaoLi00/ai-health-log">Source on GitHub</a>.
+      </p>
+
+      <h2>Where the idea started</h2>
+      <p>
+        The starting point was
+        <a href="https://www.youtube.com/watch?v=0Z-vhBvBmUY">Alan's conversation with Justin Sun</a>
+        about opportunities in the AI era. The idea of using AI to help organize
+        diet, training, and sleep stood out. AI Health Log turns that idea into
+        a small, practical starting point: keep the records together and give
+        assistants a consistent place to read them.
+      </p>
+      <figure>
+        <a href="https://www.youtube.com/watch?v=0Z-vhBvBmUY" aria-label="Watch Alan's conversation with Justin Sun on YouTube">
+          <img src="../content/assets/image/ai-health-log/alan-justin-sun-interview.png"
+               width="1034" height="708"
+               alt="YouTube thumbnail for Alan's interview with Justin Sun, titled 对话孙宇晨：年轻人如何抓住AI时代的机会？">
+        </a>
+        <figcaption>
+          <span class="num">Fig. 1</span>
+          The conversation that inspired the project.
+          <a href="https://www.youtube.com/watch?v=0Z-vhBvBmUY">Watch on YouTube &rarr;</a>
+        </figcaption>
+      </figure>
+
+      <h2>Give the next assistant the same context</h2>
+      <p>
+        Switching AI assistants often means explaining the same background again:
+        goals, recent workouts, meals, and sleep. Useful context ends up scattered
+        across conversations, while each assistant sees only part of the picture.
+        AI Health Log puts those records in ordinary Markdown and JSON files.
+        An assistant with access can read the profile and existing logs before
+        helping with the next entry or review.
+      </p>
+      <p>
+        The repository provides a common record across Muse, ChatGPT, Codex,
+        Claude Code, or another assistant. Each still needs a way to access the
+        files, but the context can travel with the data rather than being rebuilt
+        in every chat.
+      </p>
+
+      <figure>
+        <img src="../content/assets/image/ai-health-log/shared-context.svg"
+             width="640" height="560" loading="lazy"
+             alt="Training, meals, sleep, and body metrics feed one private Git repository. Assistants with authorized file access share that context to help with logs and reviews; a local dashboard can be added later.">
+        <figcaption>
+          <span class="num">Fig. 2</span>
+          One set of records, shared context for the assistants you choose.
+          Data connections and assistant access are configured separately.
+        </figcaption>
+      </figure>
+
+      <h2>What the template includes</h2>
+      <ul>
+        <li>
+          <strong>A simple record structure:</strong> a profile for goals and
+          baselines, one daily log with sleep, meals, training, body metrics, and
+          notes, plus separate folders for detailed records.
+        </li>
+        <li>
+          <strong>SynFit (训记) sync:</strong> a Python script that retrieves
+          training records, caches responses by date, updates daily logs, and
+          regenerates an overview and daily reports. Git pushes require the
+          destination repositories to be verified private.
+        </li>
+        <li>
+          <strong>Shared editing conventions:</strong> read existing context
+          before writing, keep API keys outside the repository, and ask for
+          confirmation before writing back to a third-party API.
+        </li>
+        <li>
+          <strong>An optional Health Log Coach skill:</strong> a workflow for
+          recording meals, reviewing workouts and sleep, and preparing daily or
+          weekly reviews while identifying estimates and missing records.
+        </li>
+      </ul>
+
+      <h2>A starting point you can extend</h2>
+      <p>
+        The initial scope is deliberately small: organize the data and make it
+        usable by assistants. From there, a coding assistant can help create
+        a custom skill, connect another data source, or build a local dashboard
+        around the records you actually keep.
+      </p>
+      <p>
+        The README includes a prompt for building that dashboard, with views for
+        training, weight trends, nutrition estimates, sleep, and data coverage.
+        This is an extension to build, rather than a dashboard bundled with the
+        template. Apple Health data likewise depends on a compatible connector;
+        the included sync script handles SynFit.
+      </p>
+
+      <h2>Try it with your own records</h2>
+      <p>
+        Start with the
+        <a href="https://github.com/ZhenhaoLi00/ai-health-log#readme">README</a>
+        and
+        <a href="https://github.com/ZhenhaoLi00/ai-health-log/blob/main/SETUP.md">setup guide</a>.
+        Create a new private repository, copy the template files, fill in your
+        profile, and configure the data sources you want to use. The README also
+        has a setup prompt you can give to your assistant.
+      </p>
+      <p>
+        Keep real health records and credentials out of the public template.
+        A private repository controls repository access; before sharing its
+        contents with an assistant, review that assistant's permissions and
+        data handling. The goal is a record you can inspect and extend as your
+        workflow develops.
+      </p>
+      <a class="post-back" href="../blog.html">&larr; Back to blog</a>
+    </article>
+
+    <footer class="footer">
+      <span>&copy; 2026 Zhenhao Li</span>
+      <span>Last updated - October 09, 2026</span>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

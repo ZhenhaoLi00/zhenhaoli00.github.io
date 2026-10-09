@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="title desc">
+  <title id="title">One health log, shared context</title>
+  <desc id="desc">Training, meals, sleep, and body metrics are recorded in one private Git repository. Authorized AI assistants use the same profile and records for logging and reviews. A local dashboard is an optional extension.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto-start-reverse">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#4a7090" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="640" height="560" fill="#f6f8fa"/>
+  <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="320" y="43" fill="#1a3a5c" font-size="15" letter-spacing="2">ONE HEALTH LOG, SHARED CONTEXT</text>
+    <g fill="#fff" stroke="#d7e1e9">
+      <rect x="32" y="70" width="276" height="54" rx="12"/>
+      <rect x="332" y="70" width="276" height="54" rx="12"/>
+      <rect x="32" y="136" width="276" height="54" rx="12"/>
+      <rect x="332" y="136" width="276" height="54" rx="12"/>
+    </g>
+    <g fill="#333" font-size="22">
+      <text x="170" y="105">Training</text>
+      <text x="470" y="105">Meals</text>
+      <text x="170" y="171">Sleep</text>
+      <text x="470" y="171">Body metrics</text>
+    </g>
+    <g fill="none" stroke="#4a7090" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M170 190v21h110v25"/>
+      <path d="M470 190v21H360v25"/>
+    </g>
+    <rect x="70" y="242" width="500" height="115" rx="16" fill="#1a3a5c"/>
+    <text x="320" y="278" fill="#fff" font-size="25" font-weight="600">Your private Git repository</text>
+    <text x="320" y="310" fill="#dce7f0" font-size="20">Profile + daily logs + detailed records</text>
+    <text x="320" y="337" fill="#dce7f0" font-size="17">Markdown / JSON</text>
+    <path d="M320 360v41" fill="none" stroke="#4a7090" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="32" y="411" width="576" height="72" rx="12" fill="#fff" stroke="#d7e1e9"/>
+    <text x="320" y="441" fill="#1a3a5c" font-size="22" font-weight="600">The AI assistants you choose</text>
+    <text x="320" y="467" fill="#526778" font-size="17">With authorized access to the same files</text>
+    <text x="320" y="522" fill="#1a3a5c" font-size="20">Logs &amp; reviews · Optional local dashboard</text>
+  </g>
+</svg>
